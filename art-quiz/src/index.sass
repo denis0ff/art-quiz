@@ -8,54 +8,58 @@ body
   margin: 0
   height: 100vh
   max-width: 100vw
+  background: url(./assets/images/background.jpg) no-repeat top center
+  background-size: cover
   *
     text-decoration: none
     list-style: none
-input[type="radio"]
-  display: none
+
 header
   position: fixed
 
 main
   height: 90vh
+  .main-header
+    font-size: 2rem
+    background: url(./assets/images/svg/rings.svg) no-repeat center center
 
-  
-footer
+#footer
   background-color: $second-bkg-color
+  display: flex
   height: 10vh
-  .footer__wr
-    display: flex
-    height: 100%
-  .footer-nav
-    width: 60%
-    display: flex
-    justify-content: space-evenly
-    align-items: center
-    .nav-home
-      display: block 
-      cursor: pointer
-      width: 3rem
-      height: 3rem
-      background: url(./assets/images/svg/home.svg) no-repeat center center
-      background-size: cover
-    .nav-settings
-      display: block 
-      cursor: pointer
-      width: 2.5rem
-      height: 2.5rem
-      background: url(./assets/images/svg/settings.svg) no-repeat center center
-      background-size: cover
-  .footer-about
-    width: 100%
-    display: flex
-    justify-content: space-evenly
-    align-items: center
-    .my-git 
-      width: 2.5rem
-      height: 2.5rem
-      background: url(./assets/images/svg/github.svg) no-repeat center center
-      background-size: cover
-    .rs-school
-      width: 7rem
-      height: 2.5rem
-      background: url(./assets/images/svg/rs-school.svg) no-repeat center center
+.footer__wr
+  display: flex
+  height: 100%
+.footer-nav
+  width: 60%
+  display: flex
+  justify-content: space-evenly
+  align-items: center
+.nav-home
+  display: block
+  cursor: pointer
+  width: 3rem
+  height: 3rem
+  background: url(./assets/images/svg/home.svg) no-repeat center center
+  background-size: cover
+.nav-settings
+  display: block
+  cursor: pointer
+  width: 2.5rem
+  height: 2.5rem
+  background: url(./assets/images/svg/settings.svg) no-repeat center center
+  background-size: cover
+.footer-about
+  width: 100%
+  display: flex
+  justify-content: space-evenly
+  align-items: center
+.my-git
+  width: 2.5rem
+  height: 2.5rem
+  background: url(./assets/images/svg/github.svg) no-repeat center center
+  background-size: cover
+.rs-school
+  width: 7rem
+  height: 2.5rem
+  background: url(./assets/images/svg/rs-school.svg) no-repeat center center
