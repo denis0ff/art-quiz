@@ -1,5 +1,7 @@
 "use strict";
 
+import { getData } from "./js/getData";
+
 import { Home } from "./js/views/pages/Home";
 import { Settings } from "./js/views/pages/Settings";
 import { Error404 } from "./js/views/pages/Error404";
@@ -8,15 +10,21 @@ import { Question } from "./js/views/pages/Question";
 
 import { Header } from "./js/views/components/Header";
 import { Footer } from "./js/views/components/Footer";
+import { Page } from "./js/views/components/Page";
 
-import { Utils } from "./js/services/Utils.js";
+import { Utils } from "./js/services/Utils";
 
-// List of supported routes. Any url other than these routes will throw a 404 error
 const routes = {
   "/": Home,
   "/settings": Settings,
   "/question": Question,
   "/categories": Categories,
+};
+
+const inputData = {
+  uniqAuthors: null,
+  chunkAuthors: null,
+  chunkPictures: null,
 };
 
 // The router code. Takes a URL, checks against the list of supported routes and then renders the corresponding content page.
@@ -52,4 +60,4 @@ const router = async () => {
 window.addEventListener("hashchange", router);
 
 // Listen on page load:
-window.addEventListener("load", router);
+window.onload = async () => await router().then(getData(inputData));

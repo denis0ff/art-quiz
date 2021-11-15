@@ -2,15 +2,13 @@ import data from "../../images.js";
 
 export const Home = {
   render: async () => {
-    // console.log(data);
-    // const questionsByAuthor = [];
-    // const questionsByPicture = [];
-
     return /*html*/ `
-            <section class="section">
-                <h1> Home </h1>
-            </section>
-        `;
+      <h1 class="main-header">Art Quiz</h1>
+      <div class="categories__wr">
+          <a href="./#/categories" class="quiz-artists">Artist Quiz</a>
+          <a href="./#/categories" class="quiz-pictures">Pictures Quiz</a>
+      </div>
+    `;
   },
   after_render: async () => {},
 };
