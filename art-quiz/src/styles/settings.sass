@@ -1,0 +1,35 @@
+$button-color: #FFBCA2
+.settings
+    height: 100vh
+    z-index: 100
+    fieldset
+        border: 0
+        legend
+            text-align: center
+            font-size: 2rem
+.settings-header
+    margin: 0
+    padding: 1em
+    text-align: center
+    line-height: 1em
+
+.volume-field
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    [type='range']
+        margin-bottom: 1em
+        width: 90%
+        height: 3px
+        &::-webkit-slider-thumb
+            -webkit-appearance: none
+            cursor: ew-resize
+.volume-plus
+    display: block
+    width: 2rem
+    height: 2rem
+    background: url(./assets/images/svg/volume.svg) no-repeat center / contain
+
+.volume-mute
+    @extend .volume-plus
+    background: url(./assets/images/svg/mute.svg) no-repeat center / contain

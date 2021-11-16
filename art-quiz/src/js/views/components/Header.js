@@ -1,16 +1,6 @@
 export const Header = {
   render: async () => {
-    let view = /*html*/ `
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-          <a class="navbar-item" href="/#/">
-            Home
-          </a>
-          <a class="navbar-item" href="/#/settings">
-            Settings
-          </a>
-        </nav>
-        `;
-    return view;
+    return /*html*/ `<a class="settings-link" href="/#/settings"></a>`;
   },
   after_render: async () => {},
 };

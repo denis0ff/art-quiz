@@ -4,8 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "live-server src --verbose",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "rss-scripts start",
     "build": "rss-scripts build"
   },
