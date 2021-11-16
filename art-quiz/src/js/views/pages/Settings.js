@@ -1,6 +1,5 @@
 export const Settings = {
-  render: async () => {
-    return /*html*/ `
+  render: async () => /* html */ `
     <form class="settings">
       <a href="./" class="link-back"></a>
       <h2 class="settings-header">Settings</h2>
@@ -21,7 +20,6 @@ export const Settings = {
       <button type="reset" id="resetSettings"></button>
       <button type="submit" id="submitSettings"></button>
     </form>
-    `;
-  },
+    `,
   after_render: async () => {},
 };
