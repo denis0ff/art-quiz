@@ -13,7 +13,8 @@
   "plugins": [
     "import"
   ],
-  "ignorePatterns": ["dest", "node_modules"],
+  // "ignorePatterns": ["dest", "node_modules"],
   "rules": {
+    "linebreak-style": 0
   }
 }

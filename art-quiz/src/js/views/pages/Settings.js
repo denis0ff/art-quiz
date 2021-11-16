@@ -23,3 +23,5 @@ export const Settings = {
     `,
   after_render: async () => {},
 };
+
+export default Settings;
