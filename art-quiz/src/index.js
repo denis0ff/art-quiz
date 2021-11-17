@@ -16,14 +16,19 @@ const routes = {
   '/pictures': Categories,
 };
 
-export const inputData = {
+const inputData = {
   uniqAuthors: null,
   imageIndexes: null,
   chunkAuthors: null,
   chunkPictures: null,
 };
 
-export default inputData;
+const answers = {
+  rightAnswer: null,
+  currentQuestion: null,
+  quizType: null,
+  currentCategory: null,
+};
 
 const router = async () => {
   const header = null || document.getElementById('header');
@@ -47,8 +52,8 @@ const router = async () => {
   } else {
     page = routes[parsedURL] ? routes[parsedURL] : Error404;
   }
-  content.innerHTML = await page.render({ inputData, request });
-  await page.after_render();
+  content.innerHTML = await page.render({ inputData, request, answers });
+  await page.after_render(answers);
 };
 
 // Listen on hash change:
