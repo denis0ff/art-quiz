@@ -10,6 +10,8 @@
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
     "lint:fix-staged": "eslint --fix",
+    "fix": "run-s prettier:format lint:fix",
+    "fix-staged": "lint-staged",
     "svgo": "cross-env svgo --pretty --indent=2 --disable=removeViewBox,mergePaths --enable=inlineStyles --config svgo-config.json $FILE",
     "svgo-all": "cross-env svgo -r -f src/assets/svg --pretty --indent=2 --disable=removeViewBox,mergePaths --enable=inlineStyles --config svgo-config.json"
   },

@@ -27,6 +27,7 @@ export const Utils = {
   getData: (writoTo) => {
     const output = writoTo;
     const allAuthors = [...new Set(data.map((chunk) => chunk.author))];
+    const allImageIndexes = data.map((item) => item.imageNum);
     const questionsByAuthor = [];
     const questionsByPicture = [];
     let chunkTenItems = [];
@@ -40,6 +41,7 @@ export const Utils = {
       }
     }
     output.uniqAuthors = allAuthors;
+    output.imageIndexes = allImageIndexes;
     output.chunkAuthors = questionsByAuthor;
     output.chunkPictures = questionsByPicture;
   },

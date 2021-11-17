@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Home } from './js/views/pages/Home';
 import { Settings } from './js/views/pages/Settings';
 import { Error404 } from './js/views/pages/Error404';
@@ -19,6 +18,7 @@ const routes = {
 
 export const inputData = {
   uniqAuthors: null,
+  imageIndexes: null,
   chunkAuthors: null,
   chunkPictures: null,
 };
