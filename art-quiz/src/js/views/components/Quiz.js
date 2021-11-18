@@ -31,7 +31,7 @@ const templateForPictures = `
 
 export class Quiz {
   constructor(data, request, answers) {
-    this.answers = answers;
+    this.answers = answers.currentQuiz;
     this.chunkIndex = request.category - 1;
     this.quizType = request.quiz;
     this.chunk = this.quizType === 'artists' ? data.chunkAuthors[this.chunkIndex] : data.chunkPictures[this.chunkIndex];

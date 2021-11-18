@@ -13,10 +13,13 @@ const templateNextResult = `
 
 export class Answer {
   constructor(answers) {
-    this.answer = answers.rightAnswer;
-    this.quizType = answers.quizType;
-    this.quizCategory = answers.currentCategory;
-    this.nextQuiz = answers.currentQuestion === 9 ? -1 : answers.currentQuestion + 2;
+    this.quizAnswers = answers.currentQuiz.quizAnswers;
+    this.answer = answers.currentQuiz.rightAnswer;
+    this.quizType = answers.currentQuiz.quizType;
+    this.quizCategory = answers.currentQuiz.currentCategory;
+    this.nextQuiz = answers.currentQuiz.currentQuestion === 9
+      ? 'result'
+      : answers.currentQuiz.currentQuestion + 2;
   }
 
   handleEvent(event) {
@@ -29,15 +32,28 @@ export class Answer {
   generateRender(isRight) {
     let template = templateNextResult;
     const replacers = [];
-    if (isRight) replacers.push('right', '✔');
-    else replacers.push('negative', '✘');
-    replacers.push(this.answer.imageNum, this.answer.author, this.answer.name, this.answer.year);
-    if (this.nextQuiz === -1) replacers.push(`${this.quizType}`);
-    else replacers.push(`${this.quizType}/${this.quizCategory}/${this.nextQuiz}`);
+    this.generateResult(replacers, isRight);
+    replacers.push(
+      this.answer.imageNum,
+      this.answer.author,
+      this.answer.name,
+      this.answer.year,
+      `${this.quizType}/${this.quizCategory}/${this.nextQuiz}`,
+    );
     replacers.forEach((item, i) => {
       template = template.replace(new RegExp(`{{Result${i}}}`), item);
     });
     return template;
+  }
+
+  generateResult(replacers, isRight) {
+    if (isRight) {
+      replacers.push('right', '✔');
+      this.quizAnswers.push(1);
+    } else {
+      replacers.push('negative', '✘');
+      this.quizAnswers.push(0);
+    }
   }
 }
 

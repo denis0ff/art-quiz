@@ -3,6 +3,7 @@ import { Settings } from './js/views/pages/Settings';
 import { Error404 } from './js/views/pages/Error404';
 import { Categories } from './js/views/pages/Categories';
 import { Question } from './js/views/pages/Question';
+import { Result } from './js/views/pages/Result';
 
 import { Header } from './js/views/components/Header';
 import { Footer } from './js/views/components/Footer';
@@ -24,10 +25,17 @@ const inputData = {
 };
 
 const answers = {
-  rightAnswer: null,
-  currentQuestion: null,
-  quizType: null,
-  currentCategory: null,
+  currentQuiz: {
+    rightAnswer: null,
+    currentQuestion: null,
+    quizType: null,
+    currentCategory: null,
+    quizAnswers: [],
+  },
+  quizesResult: {
+    artists: {},
+    pictures: {},
+  },
 };
 
 const router = async () => {
@@ -47,11 +55,10 @@ const router = async () => {
     + (request.question ? `/${request.question}` : '');
 
   let page;
-  if (request.question) {
-    page = Question;
-  } else {
-    page = routes[parsedURL] ? routes[parsedURL] : Error404;
-  }
+  if (request.question === 'result') page = Result;
+  else if (request.question) page = Question;
+  else page = routes[parsedURL] ? routes[parsedURL] : Error404;
+
   content.innerHTML = await page.render({ inputData, request, answers });
   await page.after_render(answers);
 };
