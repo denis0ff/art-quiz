@@ -42,8 +42,8 @@ export const Utils = {
     }
     output.uniqAuthors = allAuthors;
     output.imageIndexes = allImageIndexes;
-    output.chunkAuthors = questionsByAuthor;
-    output.chunkPictures = questionsByPicture;
+    output.authors = questionsByAuthor;
+    output.pictures = questionsByPicture;
   },
 
   randomInteger: (min, max) => Math.floor(min + Math.random() * (max + 1 - min)),

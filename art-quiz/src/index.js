@@ -13,15 +13,15 @@ import { Utils } from './js/services/Utils';
 const routes = {
   '/': Home,
   '/settings': Settings,
-  '/artists': Categories,
+  '/authors': Categories,
   '/pictures': Categories,
 };
 
 const inputData = {
   uniqAuthors: null,
   imageIndexes: null,
-  chunkAuthors: null,
-  chunkPictures: null,
+  authors: null,
+  pictures: null,
 };
 
 const answers = {
@@ -33,7 +33,7 @@ const answers = {
     quizAnswers: [],
   },
   quizesResult: {
-    artists: {},
+    authors: {},
     pictures: {},
   },
 };
@@ -60,7 +60,7 @@ const router = async () => {
   else page = routes[parsedURL] ? routes[parsedURL] : Error404;
 
   content.innerHTML = await page.render({ inputData, request, answers });
-  await page.after_render(answers);
+  await page.after_render({ inputData, answers });
 };
 
 // Listen on hash change:

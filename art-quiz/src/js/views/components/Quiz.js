@@ -1,11 +1,11 @@
-const templateForArtists = `
+const templateForAuthors = `
     <div class="artist-quiz quiz-container">
       <img src="./assets/images/quizes/img/{{Source}}.jpg" class="artist-question" />
       <div class="artist-variants">
-        <button class="artist-answer">{{Answer0}}</button>
-        <button class="artist-answer">{{Answer1}}</button>
-        <button class="artist-answer">{{Answer2}}</button>
-        <button class="artist-answer">{{Answer3}}</button>
+        <div class="artist-answer answer-variant">{{Answer0}}</div>
+        <div class="artist-answer answer-variant">{{Answer1}}</div>
+        <div class="artist-answer answer-variant">{{Answer2}}</div>
+        <div class="artist-answer answer-variant">{{Answer3}}</div>
       </div>
     </div>
 `;
@@ -13,16 +13,16 @@ const templateForPictures = `
     <div class="picture-quiz quiz-container">
       <span class="picture-question">Какую картину написал {{Artist}}?</span>
       <div class="picture-variants">
-        <div class="picture-answer">
+        <div class="picture-answer answer-variant">
           <img src="./assets/images/quizes/img/{{Answer0}}.jpg" class="image-answer" />
         </div>
-        <div class="picture-answer">
+        <div class="picture-answer answer-variant">
           <img src="./assets/images/quizes/img/{{Answer1}}.jpg" class="image-answer" />
         </div>
-        <div class="picture-answer">
+        <div class="picture-answer answer-variant">
           <img src="./assets/images/quizes/img/{{Answer2}}.jpg" class="image-answer" />
         </div>
-        <div class="picture-answer">
+        <div class="picture-answer answer-variant">
           <img src="./assets/images/quizes/img/{{Answer3}}.jpg" class="image-answer" />
         </div>
       </div>
@@ -34,8 +34,8 @@ export class Quiz {
     this.answers = answers.currentQuiz;
     this.chunkIndex = request.category - 1;
     this.quizType = request.quiz;
-    this.chunk = this.quizType === 'artists' ? data.chunkAuthors[this.chunkIndex] : data.chunkPictures[this.chunkIndex];
-    this.variants = this.quizType === 'artists' ? data.uniqAuthors : data.imageIndexes;
+    this.chunk = this.quizType === 'authors' ? data.authors[this.chunkIndex] : data.pictures[this.chunkIndex];
+    this.variants = this.quizType === 'authors' ? data.uniqAuthors : data.imageIndexes;
     this.questionIndex = request.question - 1;
   }
 
@@ -50,13 +50,13 @@ export class Quiz {
   }
 
   generateQuiz(rightAnswer) {
-    const generationType = this.quizType === 'artists' ? rightAnswer.author : rightAnswer.imageNum;
-    let template = this.quizType === 'artists' ? templateForArtists : templateForPictures;
+    const generationType = this.quizType === 'authors' ? rightAnswer.author : rightAnswer.imageNum;
+    let template = this.quizType === 'authors' ? templateForAuthors : templateForPictures;
     const replacers = this.generateVariants(generationType);
     replacers.forEach((item, i) => {
       template = template.replace(new RegExp(`{{Answer${i}}}`), item);
     });
-    template = this.quizType === 'artists'
+    template = this.quizType === 'authors'
       ? template.replace(/{{Source}}/, rightAnswer.imageNum)
       : (template = template.replace(/{{Artist}}/, rightAnswer.author));
     return template;
