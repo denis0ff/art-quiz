@@ -1,9 +1,6 @@
 import data from '../images';
 
 export const Utils = {
-  // --------------------------------
-  //  Parse a url and break it into resource, id and verb
-  // --------------------------------
   parseRequestURL: () => {
     const url = location.hash.slice(1).toLowerCase() || '/';
     const r = url.split('/');
@@ -22,9 +19,9 @@ export const Utils = {
   // --------------------------------
   //  Simple sleep implementation
   // --------------------------------
-  sleep: (ms) => new Promise((resolve) => setTimeout(resolve, ms)),
+  // sleep: (ms) => new Promise((resolve) => setTimeout(resolve, ms)),
 
-  getData: (writoTo) => {
+  getData: async (writoTo) => {
     const output = writoTo;
     const allAuthors = [...new Set(data.map((chunk) => chunk.author))];
     const allImageIndexes = data.map((item) => item.imageNum);
@@ -47,6 +44,17 @@ export const Utils = {
   },
 
   randomInteger: (min, max) => Math.floor(min + Math.random() * (max + 1 - min)),
+
+  setStorage: (input) => {
+    const answers = input;
+    localStorage.setItem('answers', JSON.stringify(answers));
+  },
+
+  getStorage: (input) => {
+    const answers = input;
+    const storage = JSON.parse(localStorage.getItem('answers'));
+    if (storage) Object.assign(answers, storage);
+  },
 };
 
 export default Utils;
