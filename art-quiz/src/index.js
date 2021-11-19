@@ -38,17 +38,22 @@ const answers = {
   },
 };
 
+const settings = {
+  time: '05',
+  sound: 0,
+};
+
 const router = async () => {
   const header = null || document.getElementById('header');
   const content = null || document.getElementById('main');
   const footer = null || document.getElementById('footer');
 
-  header.innerHTML = await Header.render();
-  await Header.after_render();
+  const request = Utils.parseRequestURL();
+
+  header.innerHTML = await Header.render({ request, settings });
+
   footer.innerHTML = await Footer.render();
   await Footer.after_render();
-
-  const request = Utils.parseRequestURL();
 
   const parsedURL = (request.quiz ? `/${request.quiz}` : '/')
     + (request.category ? `/${request.category}` : '')
@@ -60,13 +65,14 @@ const router = async () => {
   else page = routes[parsedURL] ? routes[parsedURL] : Error404;
 
   content.innerHTML = await page.render({ inputData, request, answers });
-  await page.after_render({ inputData, answers });
+  await Header.after_render(answers);
+  await page.after_render({ answers });
 };
 
-window.addEventListener('hashchange', router);
+window.onhashchange = router;
 
-window.onload = async () => router()
+window.onload = router()
   .then(Utils.getData(inputData)
     .then(Utils.getStorage(answers)));
 
-window.onbeforeunload = () => Utils.setStorage(answers);
+window.onbeforeunload = Utils.setStorage(answers);

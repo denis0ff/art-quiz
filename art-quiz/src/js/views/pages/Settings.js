@@ -1,8 +1,6 @@
 export const Settings = {
   render: async () => /* html */ `
     <form class="settings">
-      <a href="./" class="link-back"></a>
-      <h2 class="settings-header">Settings</h2>
       <fieldset class="volume-field">
         <legend class="volume-header">Volume</legend>
         <input type="range" name="" id="" value="0"/>

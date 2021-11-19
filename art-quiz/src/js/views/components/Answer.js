@@ -23,7 +23,7 @@ export class Answer {
   }
 
   handleEvent(event) {
-    const handleAnswer = event.target.textContent;
+    const handleAnswer = event ? event.target.textContent : null;
     const isRight = handleAnswer === this.answer.author;
     const content = document.getElementById('main');
     content.innerHTML += this.generateRender(isRight);

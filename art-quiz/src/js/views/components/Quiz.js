@@ -1,5 +1,6 @@
 const templateForAuthors = `
     <div class="artist-quiz quiz-container">
+      <span class="artist-question quiz-question">Кто написал эту картину?</span>
       <img src="./assets/images/quizes/img/{{Source}}.jpg" class="artist-question" />
       <div class="artist-variants">
         <div class="artist-answer answer-variant">{{Answer0}}</div>
@@ -11,7 +12,7 @@ const templateForAuthors = `
 `;
 const templateForPictures = `
     <div class="picture-quiz quiz-container">
-      <span class="picture-question">Какую картину написал {{Artist}}?</span>
+      <span class="picture-question quiz-question">Какую картину написал {{Artist}}?</span>
       <div class="picture-variants">
         <div class="picture-answer answer-variant">
           <img src="./assets/images/quizes/img/{{Answer0}}.jpg" class="image-answer" />
@@ -40,13 +41,14 @@ export class Quiz {
   }
 
   getRender() {
+    if (!this.questionIndex) this.answers.quizAnswers = [];
     const rightAnswer = this.chunk[this.questionIndex];
     this.answers.rightAnswer = rightAnswer;
     this.answers.currentQuestion = this.questionIndex;
     this.answers.quizType = this.quizType;
     this.answers.currentCategory = this.chunkIndex + 1;
-    const htmlInner = this.generateQuiz(rightAnswer);
-    return htmlInner;
+    const render = this.generateQuiz(rightAnswer);
+    return render;
   }
 
   generateQuiz(rightAnswer) {
