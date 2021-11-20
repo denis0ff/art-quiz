@@ -22,14 +22,14 @@ export const Header = {
 
     if (quiz === 'authors' || quiz === 'pictures') {
       return `
-        <a href="./" class="link-back"></a>
+        <a href="./#/" class="link-back"></a>
         <a class="settings-link" href="/#/settings"></a>
       `;
     }
 
     if (quiz === 'settings') {
       return `
-        <a href="./" class="link-back"></a>
+        <a href="./#/" class="link-back"></a>
         <h3 class="settings-header">Settings</h2>
       `;
     }

@@ -39,8 +39,8 @@ const answers = {
 };
 
 const settings = {
-  time: '05',
-  sound: 0,
+  time: 0,
+  volume: 0,
 };
 
 const router = async () => {
@@ -64,15 +64,17 @@ const router = async () => {
   else if (request.question) page = Question;
   else page = routes[parsedURL] ? routes[parsedURL] : Error404;
 
-  content.innerHTML = await page.render({ inputData, request, answers });
+  content.innerHTML = await page.render({
+    inputData, request, answers, settings,
+  });
   await Header.after_render({ request, answers });
-  await page.after_render({ inputData, answers });
+  await page.after_render({ inputData, answers, settings });
 };
 
 window.onhashchange = router;
 
 window.onload = router()
   .then(Utils.getData(inputData)
-    .then(Utils.getStorage(answers)));
+    .then(Utils.getStorage({ answers, settings })));
 
-window.onbeforeunload = Utils.setStorage(answers);
+window.onbeforeunload = () => Utils.setStorage({ answers, settings });

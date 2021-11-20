@@ -9,9 +9,9 @@ export const Utils = {
       category: null,
       question: null,
     };
-    request.quiz = r[1];
-    request.category = r[2];
-    request.question = r[3];
+    request.quiz = null || r[1];
+    request.category = null || r[2];
+    request.question = null || r[3];
 
     return request;
   },
@@ -46,14 +46,17 @@ export const Utils = {
   randomInteger: (min, max) => Math.floor(min + Math.random() * (max + 1 - min)),
 
   setStorage: (input) => {
-    const answers = input;
+    const { answers, settings } = input;
     localStorage.setItem('answers', JSON.stringify(answers));
+    localStorage.setItem('settings', JSON.stringify(settings));
   },
 
   getStorage: (input) => {
-    const answers = input;
-    const storage = JSON.parse(localStorage.getItem('answers'));
-    if (storage) Object.assign(answers, storage);
+    const { answers, settings } = input;
+    const storageAnswers = JSON.parse(localStorage.getItem('answers'));
+    const storageSettings = JSON.parse(localStorage.getItem('settings'));
+    if (storageAnswers) Object.assign(answers, storageAnswers);
+    if (storageSettings) Object.assign(settings, storageSettings);
   },
 };
 
