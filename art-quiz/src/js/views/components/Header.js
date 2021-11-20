@@ -43,8 +43,7 @@ export const Header = {
       Header.startTimer(time, display, input);
     }
   },
-  startTimer: (duration, renderInto, answers) => {
-    const answer = new Answer(answers);
+  startTimer: (duration, renderInto, input) => {
     const display = renderInto;
     let timer = duration;
     let seconds;
@@ -54,10 +53,13 @@ export const Header = {
       display.textContent = `00:${seconds}`;
       timer -= 1;
       if (timer < 0) {
-        answer.handleEvent(timerTick);
+        const answer = new Answer(input.answers);
+        answer.handleEvent();
         clearInterval(timerTick);
       }
     }, 1000);
+    const answerButtons = document.querySelectorAll('.answer-variant');
+    answerButtons.forEach((button) => button.addEventListener('click', () => clearInterval(timerTick)));
   },
 };
 

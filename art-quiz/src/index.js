@@ -65,8 +65,8 @@ const router = async () => {
   else page = routes[parsedURL] ? routes[parsedURL] : Error404;
 
   content.innerHTML = await page.render({ inputData, request, answers });
-  await Header.after_render(answers);
-  await page.after_render({ answers });
+  await Header.after_render({ request, answers });
+  await page.after_render({ inputData, answers });
 };
 
 window.onhashchange = router;
