@@ -18,4 +18,75 @@
     cursor: pointer
   .category-link
     width: 90%
+  &:hover
+    border-color: $button-hover !important
     
+.category-wrapper.done
+  background-color: #d8d8d817
+  border-color: #d8d8d817
+
+.category-link:hover, .category-score-link:hover
+  color: $button-hover
+
+.score-container
+  position: absolute
+  top: 0
+  left: 0
+  margin-top: 10vh
+  width: 100vw
+  max-height: 80vh
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-start
+  justify-content: center
+  background: $form-bkg-color
+  overflow: scroll
+  
+.score-container.hide 
+  left: -9999px
+  transition: 2s
+
+.score-item
+  position: relative
+  margin: 0.5em
+  width: calc( 50% - 1em )
+  height: 40vh
+  border: 3px solid $main-text-color
+  overflow: hidden
+  &:hover
+    border-color: $button-hover
+
+.score-item.done
+  border-color: $green-border
+  &:hover
+    border-color: $button-hover
+
+.score-image
+  height: 100%
+  width: 100%
+  filter: grayscale(0)
+
+.score-image.done
+  filter: grayscale(100)
+
+.score-item-info
+  position: absolute
+  bottom: -100%
+  padding: 0.5em
+  width: 100%
+  height: 100%
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  background: $form-bkg-color
+  font-size: .7em
+  transition: 1s linear
+  
+.score-item-info.hide
+  bottom: 0
+
+.score-item-info
+  span
+    margin: 0.5em 0.1em
+    text-align: center

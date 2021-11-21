@@ -14,18 +14,10 @@ const templateForPictures = `
     <div class="picture-quiz quiz-container">
       <span class="quiz-question">Какую картину написал {{Artist}}?</span>
       <div class="picture-variants quiz-variants">
-        <div class="picture-answer answer-variant">
-          <img src="./assets/images/quizes/img/{{Answer0}}.jpg" class="image-answer" />
-        </div>
-        <div class="picture-answer answer-variant">
-          <img src="./assets/images/quizes/img/{{Answer1}}.jpg" class="image-answer" />
-        </div>
-        <div class="picture-answer answer-variant">
-          <img src="./assets/images/quizes/img/{{Answer2}}.jpg" class="image-answer" />
-        </div>
-        <div class="picture-answer answer-variant">
-          <img src="./assets/images/quizes/img/{{Answer3}}.jpg" class="image-answer" />
-        </div>
+          <img src="./assets/images/quizes/img/{{Answer0}}.jpg" class="image-answer answer-variant" />
+          <img src="./assets/images/quizes/img/{{Answer1}}.jpg" class="image-answer answer-variant" />
+          <img src="./assets/images/quizes/img/{{Answer2}}.jpg" class="image-answer answer-variant" />
+          <img src="./assets/images/quizes/img/{{Answer3}}.jpg" class="image-answer answer-variant" />
       </div>
     </div>
 `;

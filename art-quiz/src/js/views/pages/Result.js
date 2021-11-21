@@ -1,14 +1,12 @@
 const templateQuizResult = `
-  <div class="result-score__wr">
+  <div class="result-container main-container">
     <div class="result-cup"></div>
     <span class="result-congartulation">Congratulations!</span>
     <span class="result-score">{{Score0}}/10</span>
-    <button class="result-score-home">
-      <a href="./#/" class="result-link-home">Home</a>
-    </button>
-    <button class="result-score-next">
-      <a href="./#/{{Score1}}" class="result-score-link-next">Next Quiz</a>
-    </button>
+    <div class="couple-buttons">
+      <a href="./#/" class="result-link-home button">Home</a>
+      <a href="./#/{{Score1}}" class="result-score-link-next button">Next Quiz</a>
+    </div>
   </div>
 `;
 

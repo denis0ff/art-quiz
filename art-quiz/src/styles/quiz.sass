@@ -1,26 +1,26 @@
 .quiz-container
-  padding: 1em
-  height: 90vh
+  padding: 6vh 1em
+  height: 80vh
   text-align: center
 
 .quiz-question
-  line-height: 2em
+  display: block
+  margin: 0.5em
 
 .quiz-variants
   margin-top: 0.5em
   display: grid
   grid-template: 50% 50% / 50% 50%
   align-items: center
-  justify-items: center
   gap: 0.5em
 
 .button.artist-answer
-  width: 100%
+  width: calc( 100% - 1em )
   padding: 0.5em
   font-size: 0.8em
 
 .artist-question
-  max-height: 50vh
+  max-height: 45vh
 
 .answer-result
   position: absolute
@@ -45,6 +45,7 @@
 .result-image
   width: 100%
   height: 100%
+  border-radius: 5%
 
 .button.result-link
   margin: 0.5em 0
@@ -60,12 +61,41 @@
   width: 45px
   line-height: 30px
   font-size: 30px
-  color: #b60000
-  border: 2px solid #5f0000
+  color: $red
+  border: 2px solid $red-border
   border-radius: 50%
   
 
 .result-marker.right
-  color: #00b600
-  border-color: #005f00
+  color: $green
+  border-color: $green-border
 
+.result-container
+  display: flex
+  flex-direction: column
+  align-items: center
+  row-gap: 0.5em
+
+.result-cup
+  width: 100%
+  height: 30vh
+  background: url(./assets/images/svg/score.svg) no-repeat center / contain
+
+.result-congartulation
+  font-size: 2rem
+
+.result-score
+  font-weight: bold
+  font-size: 2.2rem
+
+#questionTimer
+  font-size: 2rem
+
+.picture-variants
+  max-height: 80vh
+
+.image-answer
+  width: calc( 100% - 1em )
+  border: 3px solid $main-text-color
+  &:hover
+    border-color: $button-hover

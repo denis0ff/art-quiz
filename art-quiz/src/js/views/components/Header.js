@@ -11,8 +11,8 @@ export const Header = {
     }
 
     if (quiz && question) {
-      let template = '';
-      if (time) {
+      let template = '<a href="./#/" class="link-back">❮</a>';
+      if (+time) {
         template = '<span id="questionTimer">00:{{Time}}</span>';
         template = template.replace(/{{Time}}/, time);
         Header.isTimer = true;
@@ -46,13 +46,16 @@ export const Header = {
   },
   startTimer: (duration, renderInto, input) => {
     const display = renderInto;
+    const { hash } = window.location;
     let timer = duration;
     let seconds;
     const timerTick = setInterval(() => {
+      const currenthash = window.location.hash;
       seconds = parseInt(timer % 60, 10);
       seconds = seconds < 10 ? `0${seconds}` : seconds;
       display.textContent = `00:${seconds}`;
       timer -= 1;
+      if (currenthash !== hash) clearInterval(timerTick);
       if (timer < 0) {
         const answer = new Answer(input.answers);
         answer.handleEvent();

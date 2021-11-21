@@ -1,6 +1,6 @@
 const templateScore = ` 
   <div class="score-item {{Score0}}">
-    <img src="./assets/images/quizes/img/{{Score1}}.jpg" class="score-image">
+    <img class="score-image {{Score0}}" src="./assets/images/quizes/img/{{Score1}}.jpg">
     <div class="score-item-info">
       <span class="score-picture">{{Score2}}</span>
       <span class="score-author">{{Score3}}</span>
@@ -20,26 +20,43 @@ export class Score {
     const categoryAnswers = this.answers[handleValue[0]][handleValue[1]];
     const categoryData = this.data[handleValue[0]][handleValue[1] - 1];
     const content = document.getElementById('main');
-    content.innerHTML += Score.generateRender(categoryData, categoryAnswers);
+    const divContainer = document.createElement('div');
+    divContainer.className = 'score-container';
+    divContainer.innerHTML = Score.generateRender(categoryData, categoryAnswers);
+    content.append(divContainer);
+    Score.closeListen();
   }
 
   static generateRender(data, answers) {
     const checkedAnswers = answers || [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    let render = '<form class="score-container">';
+    let render = '';
     data.forEach((item, i) => {
       let template = templateScore;
       const status = checkedAnswers[i] ? 'done' : '';
       const replacers = [status, item.imageNum, item.name, item.author, item.year];
       replacers.forEach((replacer, index) => {
-        template = template.replace(new RegExp(`{{Score${index}}}`), replacer);
+        template = template.replace(new RegExp(`{{Score${index}}}`, 'gm'), replacer);
       });
       render += template;
     });
-    render += `
-    <button type="submit" class="close">Close</button>
-    </form>
-    `;
+    render += '<button type="button" class="score-close button">Close</button>';
     return render;
+  }
+
+  static closeListen() {
+    const closeButton = document.querySelector('.score-close');
+    const scoreContainer = document.querySelector('.score-container');
+    const scoreItems = document.querySelectorAll('.score-item');
+    const scoreItemsInfo = document.querySelectorAll('.score-item-info');
+
+    scoreItems.forEach((item, index) => item.addEventListener('click', () => scoreItemsInfo[index].classList.toggle('hide')));
+
+    closeButton.onclick = () => {
+      scoreContainer.classList.add('hide');
+      setTimeout(() => {
+        scoreContainer.parentNode.removeChild(scoreContainer);
+      }, 1000);
+    };
   }
 }
 
