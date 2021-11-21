@@ -8,7 +8,7 @@ export const Home = {
         </div>
       </div>
     `,
-  after_render: async () => {},
+  afterRender: async () => {},
 };
 
 export default Home;

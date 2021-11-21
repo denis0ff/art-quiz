@@ -30,7 +30,7 @@ export const Result = {
     answers.length = 0;
     return template;
   },
-  after_render: async () => {},
+  afterRender: async () => {},
 };
 
 export default Result;

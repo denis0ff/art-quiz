@@ -1,23 +1,31 @@
-$button-color: #FFBCA2
 .settings
-    height: 100vh
-    z-index: 100
-.settings-field-header
-    margin: 0
-    text-align: center
-    font-size: 2rem
-
-.settings-field
     display: flex
-    justify-content: space-around
-    padding: 0.5em
+    flex-direction: column
+    row-gap: 1em
+    align-items: center
     [type='range']
-        margin-bottom: 1em
         width: 90%
         height: 3px
         &::-webkit-slider-thumb
             -webkit-appearance: none
             cursor: ew-resize
+
+.link-back
+    position: absolute
+    left: 0
+    width: 2em
+    height: 2em
+    line-height: 2.1em
+    text-align: center
+
+.settings-field-header
+    margin: 0
+    font-size: 2rem
+
+.settings-field
+    display: flex
+    column-gap: 0.5em
+
 .volume
     display: block
     width: 2rem

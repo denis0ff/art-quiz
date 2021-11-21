@@ -3,20 +3,16 @@ export const Settings = {
     const { settings } = input;
     const { volume } = settings;
     const { time } = settings;
-    const volumeClass = volume ? '' : 'mute';
+    const volumeClass = +volume ? '' : 'mute';
     const timeContent = time ? `Limit: ${time} seconds` : 'No Limit';
     return `
-    <div class="settings">
+    <div class="settings main-container">
       <h4 class="settings-field-header">Volume</h4>
-      <div class="settings-field">
-        <span class="volume ${volumeClass}" id="soundValue"></span>
-        <input type="range" name="" id="soundSettings" value="${volume}" min="0" max="100" step="5"/>
-      </div>
+      <span class="volume ${volumeClass}" id="soundValue"></span>
+      <input type="range" name="" id="soundSettings" value="${volume}" min="0" max="100" step="5"/>
       <h4 class="settings-field-header">Round Time</h4>
-      <div class="settings-field">
-        <span class="settings-timer" id="timeValue">${timeContent}</span>
-        <input type="range" name="" id="timeSettings" value="${time}" min="0" max="30" step="5"/>
-      </div>
+      <span class="settings-timer" id="timeValue">${timeContent}</span>
+      <input type="range" name="" id="timeSettings" value="${time}" min="0" max="30" step="5"/>
       <div class="settings-field">
         <a class="button" id="resetSettings">Reset</a>
         <a href="./#/" class="button" id="submitSettings">Submit</a>
@@ -24,7 +20,7 @@ export const Settings = {
     </div>
     `;
   },
-  after_render: async (input) => {
+  afterRender: async (input) => {
     const { settings } = input;
     const buttonReset = document.getElementById('resetSettings');
     const soundInput = document.getElementById('soundSettings');

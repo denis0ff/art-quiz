@@ -2,7 +2,7 @@ import data from '../images';
 
 export const Utils = {
   parseRequestURL: () => {
-    const url = location.hash.slice(1).toLowerCase() || '/';
+    const url = window.location.hash.slice(1).toLowerCase() || '/';
     const r = url.split('/');
     const request = {
       quiz: null,

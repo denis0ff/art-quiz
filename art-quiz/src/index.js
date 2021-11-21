@@ -53,7 +53,7 @@ const router = async () => {
   header.innerHTML = await Header.render({ request, settings });
 
   footer.innerHTML = await Footer.render();
-  await Footer.after_render();
+  await Footer.afterRender();
 
   const parsedURL = (request.quiz ? `/${request.quiz}` : '/')
     + (request.category ? `/${request.category}` : '')
@@ -67,8 +67,8 @@ const router = async () => {
   content.innerHTML = await page.render({
     inputData, request, answers, settings,
   });
-  await Header.after_render({ request, answers });
-  await page.after_render({ inputData, answers, settings });
+  await Header.afterRender({ request, answers });
+  await page.afterRender({ inputData, answers, settings });
 };
 
 window.onhashchange = router;

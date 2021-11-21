@@ -7,7 +7,7 @@ const templateNextResult = `
     <span class="result-text">{{Result3}}</span>
     <span class="result-text">{{Result4}}</span>
     <span class="result-text">{{Result5}}</span>
-    <button type="submit" class="result-next"><a href="./#/{{Result6}}" class="result-link">Continue</a></button>
+    <a href="./#/{{Result6}}" class="result-link button">Continue</a>
   </form>
 `;
 

@@ -1,19 +1,19 @@
 const templateForAuthors = `
     <div class="artist-quiz quiz-container">
-      <span class="artist-question quiz-question">Кто написал эту картину?</span>
+      <span class="quiz-question">Кто написал эту картину?</span>
       <img src="./assets/images/quizes/img/{{Source}}.jpg" class="artist-question" />
-      <div class="artist-variants">
-        <div class="artist-answer answer-variant">{{Answer0}}</div>
-        <div class="artist-answer answer-variant">{{Answer1}}</div>
-        <div class="artist-answer answer-variant">{{Answer2}}</div>
-        <div class="artist-answer answer-variant">{{Answer3}}</div>
+      <div class="artist-variants quiz-variants">
+        <div class="artist-answer answer-variant button">{{Answer0}}</div>
+        <div class="artist-answer answer-variant button">{{Answer1}}</div>
+        <div class="artist-answer answer-variant button">{{Answer2}}</div>
+        <div class="artist-answer answer-variant button">{{Answer3}}</div>
       </div>
     </div>
 `;
 const templateForPictures = `
     <div class="picture-quiz quiz-container">
-      <span class="picture-question quiz-question">Какую картину написал {{Artist}}?</span>
-      <div class="picture-variants">
+      <span class="quiz-question">Какую картину написал {{Artist}}?</span>
+      <div class="picture-variants quiz-variants">
         <div class="picture-answer answer-variant">
           <img src="./assets/images/quizes/img/{{Answer0}}.jpg" class="image-answer" />
         </div>

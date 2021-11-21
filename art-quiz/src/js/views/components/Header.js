@@ -22,21 +22,22 @@ export const Header = {
 
     if (quiz === 'authors' || quiz === 'pictures') {
       return `
-        <a href="./#/" class="link-back"></a>
+        <a href="./#/" class="link-back">❮</a>
+        <h3 class="page-header">${quiz[0].toUpperCase() + quiz.slice(1)}</h2>
         <a class="settings-link" href="/#/settings"></a>
       `;
     }
 
     if (quiz === 'settings') {
       return `
-        <a href="./#/" class="link-back"></a>
-        <h3 class="settings-header">Settings</h2>
+        <a href="./#/" class="link-back">❮</a>
+        <h3 class="page-header">Settings</h2>
       `;
     }
 
     return '<a class="settings-link" href="/#/settings"></a>';
   },
-  after_render: async (input) => {
+  afterRender: async (input) => {
     const display = null || document.querySelector('#questionTimer');
     if (display) {
       const time = display.textContent.slice(3);

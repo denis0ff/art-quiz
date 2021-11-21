@@ -6,7 +6,7 @@ export const Footer = {
         <a class="my-git" href="https://github.com/denis0ff"></a>
     </div>
   `,
-  after_render: async () => {},
+  afterRender: async () => {},
 };
 
 export default Footer;
