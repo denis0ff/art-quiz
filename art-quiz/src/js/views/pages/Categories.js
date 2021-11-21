@@ -9,7 +9,7 @@ export const Categories = {
     if (quiz === 'pictures') categoriesCount = input.inputData.pictures.length;
     let render = `
       <div class="main-container">
-      <div class="categories-wrapper">
+        <div class="categories-wrapper">
     `;
     let i = 1;
     while (i <= categoriesCount) {
@@ -20,21 +20,21 @@ export const Categories = {
       render += `
       <div class="category-wrapper ${status}">
         <a href="./#/${input.request.quiz}/${i}/1" class="category-link">Category ${i}</a>
-        <button class="category-score-link" value="${quiz}-${i}">${score}/10</button>
+        <button class="category-score-link ${status}" value="${quiz}-${i}">${score}/10</button>
       </div>
       `;
       i += 1;
     }
     render += `
-    </div>
-    </div>
+        </div>
+      </div>
     `;
     return render;
   },
   afterRender: async (input) => {
-    const scoreButtons = document.querySelectorAll('.category-score-link');
+    const doneLinks = document.querySelectorAll('.category-score-link.done');
     const score = new Score(input.inputData, input.answers);
-    scoreButtons.forEach((button) => button.addEventListener('click', score));
+    doneLinks.forEach((link) => link.addEventListener('click', score));
   },
 };
 

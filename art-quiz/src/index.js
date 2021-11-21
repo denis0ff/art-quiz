@@ -50,6 +50,10 @@ const router = async () => {
 
   const request = Utils.parseRequestURL();
 
+  const hider = document.getElementById('hider');
+  hider.classList.toggle('show');
+  await Utils.sleep(500);
+
   header.innerHTML = await Header.render({ request, settings });
 
   footer.innerHTML = await Footer.render();
@@ -67,6 +71,10 @@ const router = async () => {
   content.innerHTML = await page.render({
     inputData, request, answers, settings,
   });
+
+  await Utils.sleep(500);
+  hider.classList.toggle('show');
+
   await Header.afterRender({ request, answers });
   await page.afterRender({ inputData, answers, settings });
 };

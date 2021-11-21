@@ -19,7 +19,7 @@ export const Utils = {
   // --------------------------------
   //  Simple sleep implementation
   // --------------------------------
-  // sleep: (ms) => new Promise((resolve) => setTimeout(resolve, ms)),
+  sleep: (ms) => new Promise((resolve) => setTimeout(resolve, ms)),
 
   getData: async (writoTo) => {
     const output = writoTo;

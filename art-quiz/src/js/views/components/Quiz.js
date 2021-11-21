@@ -2,6 +2,18 @@ const templateForAuthors = `
     <div class="artist-quiz quiz-container">
       <span class="quiz-question">Кто написал эту картину?</span>
       <img src="./assets/images/quizes/img/{{Source}}.jpg" class="artist-question" />
+      <div class="dots-container">
+        <div class="dot {{Indicator}}"></div>
+        <div class="dot {{Indicator}}"></div>
+        <div class="dot {{Indicator}}"></div>
+        <div class="dot {{Indicator}}"></div>
+        <div class="dot {{Indicator}}"></div>
+        <div class="dot {{Indicator}}"></div>
+        <div class="dot {{Indicator}}"></div>
+        <div class="dot {{Indicator}}"></div>
+        <div class="dot {{Indicator}}"></div>
+        <div class="dot {{Indicator}}"></div>
+      </div>
       <div class="artist-variants quiz-variants">
         <div class="artist-answer answer-variant button">{{Answer0}}</div>
         <div class="artist-answer answer-variant button">{{Answer1}}</div>
@@ -13,6 +25,18 @@ const templateForAuthors = `
 const templateForPictures = `
     <div class="picture-quiz quiz-container">
       <span class="quiz-question">Какую картину написал {{Artist}}?</span>
+      <div class="dots-container">
+        <div class="dot {{Indicator}}"></div>
+        <div class="dot {{Indicator}}"></div>
+        <div class="dot {{Indicator}}"></div>
+        <div class="dot {{Indicator}}"></div>
+        <div class="dot {{Indicator}}"></div>
+        <div class="dot {{Indicator}}"></div>
+        <div class="dot {{Indicator}}"></div>
+        <div class="dot {{Indicator}}"></div>
+        <div class="dot {{Indicator}}"></div>
+        <div class="dot {{Indicator}}"></div>
+      </div>
       <div class="picture-variants quiz-variants">
           <img src="./assets/images/quizes/img/{{Answer0}}.jpg" class="image-answer answer-variant" />
           <img src="./assets/images/quizes/img/{{Answer1}}.jpg" class="image-answer answer-variant" />
@@ -53,6 +77,10 @@ export class Quiz {
     template = this.quizType === 'authors'
       ? template.replace(/{{Source}}/, rightAnswer.imageNum)
       : (template = template.replace(/{{Artist}}/, rightAnswer.author));
+    const dotsReplacer = this.generateDots();
+    dotsReplacer.forEach((item) => {
+      template = template.replace(/{{Indicator}}/, item);
+    });
     return template;
   }
 
@@ -64,6 +92,16 @@ export class Quiz {
       variantsSet.add(randomAuthor);
     }
     return Quiz.mixArray(Array.from(variantsSet));
+  }
+
+  generateDots() {
+    const replacers = [];
+    for (let i = 0; i < 10; i += 1) {
+      if (this.answers.quizAnswers[i] === undefined) replacers.push('');
+      else if (this.answers.quizAnswers[i] === 0) replacers.push('wrong');
+      else replacers.push('right');
+    }
+    return replacers;
   }
 
   static mixArray(array) {

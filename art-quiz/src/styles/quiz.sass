@@ -33,6 +33,10 @@
   flex-direction: column
   align-items: center
   background: $form-bkg-color
+  transition: 0.5s
+
+.answer-result.hide
+  left: -100%
 
 .result-text
   text-align: center
@@ -65,7 +69,6 @@
   border: 2px solid $red-border
   border-radius: 50%
   
-
 .result-marker.right
   color: $green
   border-color: $green-border
@@ -99,3 +102,19 @@
   border: 3px solid $main-text-color
   &:hover
     border-color: $button-hover
+
+.dots-container
+  width: 100%
+  display: flex
+  justify-content: space-evenly
+
+.dot
+  border: 0.5rem solid $main-text-color
+  border-radius: 50%
+
+.dot.right
+  border-color: $green-border
+
+.dot.wrong
+  border-color: $red-border
+  
