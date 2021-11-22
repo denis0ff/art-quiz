@@ -1,6 +1,6 @@
 @import variables
 
-.categories-wrapper 
+.categories-wrapper
   display: flex
   padding: 1em 0
   height: 100%
@@ -8,7 +8,7 @@
   row-gap: 0.5em
   overflow-y: auto
 
-.category-wrapper 
+.category-wrapper
   padding: 0 1em
   display: flex
   justify-content: space-between
@@ -20,7 +20,7 @@
     width: 90%
   &:hover
     border-color: $button-hover !important
-    
+
 .category-wrapper.done
   background-color: #d8d8d817
   border-color: #d8d8d817
@@ -37,8 +37,7 @@
   position: absolute
   top: 0
   left: 0
-  padding: 1em inherit
-  width: 100vw
+  width: 100%
   max-height: 100vh
   display: flex
   flex-wrap: wrap
@@ -48,8 +47,8 @@
   overflow: scroll
   transition: 1s
   z-index: 100
-  
-.score-container.hide 
+
+.score-container.hide
   top: -100%
 
 .score-item
@@ -58,6 +57,7 @@
   width: calc( 50% - 1em )
   height: 40vh
   border: 3px solid $main-text-color
+  text-align: center
   overflow: hidden
   &:hover
     border-color: $button-hover
@@ -68,10 +68,13 @@
     border-color: $button-hover
 
 .score-image
+  width: auto
   height: 100%
-  width: 100%
   filter: grayscale(100)
   cursor: pointer
+  @media screen and (min-width: 800px)
+    width: 100%
+    height: auto
 
 .score-image.done
   filter: grayscale(0)
@@ -90,7 +93,7 @@
   font-size: .7em
   transition: 1s linear
   cursor: pointer
-  
+
 .score-item-info.hide
   bottom: 0
 
@@ -98,6 +101,6 @@
   span
     margin: 0.5em 0.1em
     text-align: center
-  
+
 .button.score-close
   padding: 0.5em
