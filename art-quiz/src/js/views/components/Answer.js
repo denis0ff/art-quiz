@@ -73,8 +73,8 @@ export class Answer {
 
   static generateSound(isRight, volume) {
     const audio = new Audio();
-    if (isRight) audio.src = '../../../assets/sounds/right.mp3';
-    else audio.src = '../../../assets/sounds/wrong.mp3';
+    if (isRight) audio.src = './assets/sounds/right.mp3';
+    else audio.src = './assets/sounds/wrong.mp3';
     audio.volume = volume / 100;
     return audio;
   }

@@ -44,7 +44,7 @@ export const Result = {
     const { volume } = input.settings;
     if (volume) {
       const audio = new Audio();
-      audio.src = '../../../assets/sounds/result.mp3';
+      audio.src = './assets/sounds/result.mp3';
       audio.volume = volume / 100;
       audio.autoplay = true;
     }

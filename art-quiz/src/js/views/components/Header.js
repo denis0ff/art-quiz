@@ -24,7 +24,7 @@ export const Header = {
       return `
         <a href="./#/" class="link-back">❮</a>
         <h3 class="page-header">${quiz[0].toUpperCase() + quiz.slice(1)}</h2>
-        <a class="settings-link" href="/#/settings"></a>
+        <a class="settings-link" href="./#/settings"></a>
       `;
     }
 
@@ -32,7 +32,7 @@ export const Header = {
       return '<h3 class="page-header">Settings</h2>';
     }
 
-    return '<a class="settings-link" href="/#/settings"></a>';
+    return '<a class="settings-link" href="./#/settings"></a>';
   },
   afterRender: async (input) => {
     const display = null || document.querySelector('#questionTimer');
