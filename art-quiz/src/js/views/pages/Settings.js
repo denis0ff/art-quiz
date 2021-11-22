@@ -1,3 +1,5 @@
+let isFullscreen = false;
+
 export const Settings = {
   render: async (input) => {
     const { settings } = input;
@@ -13,6 +15,8 @@ export const Settings = {
       <h4 class="settings-field-header">Round Time</h4>
       <span class="settings-timer" id="timeValue">${timeContent}</span>
       <input type="range" name="" id="timeSettings" value="${time}" min="0" max="30" step="5"/>
+      <h4 class="settings-field-header">Fullscreen</h4>
+      <label id="fullscreen"><input type="checkbox"/><i></i></label>
       <div class="couple-buttons">
         <a class="button" id="resetSettings">Reset</a>
         <a href="./#/" class="button" id="submitSettings">Submit</a>
@@ -27,10 +31,15 @@ export const Settings = {
     const timeInput = document.getElementById('timeSettings');
     const soundValue = document.getElementById('soundValue');
     const timeValue = document.getElementById('timeValue');
+    const fullscreen = document.getElementById('fullscreen');
+    const fullscreenInput = fullscreen.querySelector('input');
+
     const currentSettings = {
       time: timeInput.value,
       volume: soundInput.value,
+      fullscreen: fullscreen.checked,
     };
+
     soundInput.onchange = (e) => {
       const { value } = e.target;
       if (+value) soundValue.classList.remove('mute');
@@ -49,6 +58,20 @@ export const Settings = {
     buttonReset.onclick = () => {
       soundInput.value = currentSettings.volume;
       timeInput.value = currentSettings.time;
+      fullscreenInput.checked = currentSettings.fullscreen;
+      fullscreen.onchange();
+    };
+
+    fullscreenInput.checked = isFullscreen;
+
+    fullscreen.onchange = () => {
+      if (!document.fullscreenElement) {
+        document.body.requestFullscreen();
+        isFullscreen = true;
+      } else if (document.fullscreenEnabled) {
+        document.exitFullscreen();
+        isFullscreen = false;
+      }
     };
   },
 };

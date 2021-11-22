@@ -37,19 +37,20 @@
   position: absolute
   top: 0
   left: 0
-  margin-top: 10vh
+  padding: 1em inherit
   width: 100vw
-  max-height: 80vh
+  max-height: 100vh
   display: flex
   flex-wrap: wrap
   align-items: flex-start
   justify-content: center
   background: $form-bkg-color
   overflow: scroll
+  transition: 1s
+  z-index: 100
   
 .score-container.hide 
-  left: -9999px
-  transition: 2s
+  top: -100%
 
 .score-item
   position: relative
@@ -88,6 +89,7 @@
   background: $form-bkg-color
   font-size: .7em
   transition: 1s linear
+  cursor: pointer
   
 .score-item-info.hide
   bottom: 0

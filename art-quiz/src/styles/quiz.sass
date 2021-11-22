@@ -20,7 +20,7 @@
   font-size: 0.8em
 
 .artist-question
-  max-height: 45vh
+  max-height: 40vh
 
 .answer-result
   position: absolute
@@ -84,6 +84,12 @@
   height: 30vh
   background: url(./assets/images/svg/score.svg) no-repeat center / contain
 
+.result-cup.half
+  background-image: url(./assets/images/svg/score-half.svg)
+
+.result-cup.win
+  background-image: url(./assets/images/svg/score-win.svg)
+
 .result-congartulation
   font-size: 2rem
 
@@ -101,6 +107,7 @@
   width: calc( 100% - 1em )
   border: 3px solid $main-text-color
   &:hover
+    cursor: pointer
     border-color: $button-hover
 
 .dots-container

@@ -11,9 +11,9 @@ export const Header = {
     }
 
     if (quiz && question) {
-      let template = '<a href="./#/" class="link-back">❮</a>';
+      let template = '<a href="./#/" class="link-back">✖</a>';
       if (+time) {
-        template = '<span id="questionTimer">00:{{Time}}</span>';
+        template += '<span id="questionTimer">00:{{Time}}</span>';
         template = template.replace(/{{Time}}/, time);
         Header.isTimer = true;
       }
@@ -29,10 +29,7 @@ export const Header = {
     }
 
     if (quiz === 'settings') {
-      return `
-        <a href="./#/" class="link-back">❮</a>
-        <h3 class="page-header">Settings</h2>
-      `;
+      return '<h3 class="page-header">Settings</h2>';
     }
 
     return '<a class="settings-link" href="/#/settings"></a>';
@@ -57,7 +54,7 @@ export const Header = {
       timer -= 1;
       if (currenthash !== hash) clearInterval(timerTick);
       if (timer < 0) {
-        const answer = new Answer(input.answers);
+        const answer = new Answer(input.answers, input.settings);
         answer.handleEvent();
         clearInterval(timerTick);
       }

@@ -1,8 +1,8 @@
 export const Error404 = {
-  render: async () => /* html */ `
-            <section class="section">
+  render: async () => `
+            <div class="main-container">
                 <h2> 404 Error </h2>
-            </section>
+            </div>
         `,
   afterRender: async () => {},
 };

@@ -21,9 +21,12 @@ export class Score {
     const categoryData = this.data[handleValue[0]][handleValue[1] - 1];
     const content = document.getElementById('main');
     const divContainer = document.createElement('div');
-    divContainer.className = 'score-container';
+
+    divContainer.className = 'score-container hide';
     divContainer.innerHTML = Score.generateRender(categoryData, categoryAnswers);
     content.append(divContainer);
+
+    setTimeout(() => divContainer.classList.remove('hide'), 500);
     Score.closeListen();
   }
 

@@ -10,7 +10,7 @@ const templateNextResult = `
 `;
 
 export class Answer {
-  constructor(answers) {
+  constructor(answers, settings) {
     this.quizAnswers = answers.currentQuiz.quizAnswers;
     this.answer = answers.currentQuiz.rightAnswer;
     this.quizType = answers.currentQuiz.quizType;
@@ -18,6 +18,7 @@ export class Answer {
     this.nextQuiz = answers.currentQuiz.currentQuestion === 9
       ? 'result'
       : answers.currentQuiz.currentQuestion + 2;
+    this.volume = settings.volume;
   }
 
   handleEvent(event) {
@@ -30,12 +31,16 @@ export class Answer {
       isRight = +imgAnswer === +this.answer.imageNum;
     }
     const content = document.getElementById('main');
-    // content.innerHTML += this.generateRender(isRight);
+
+    let audio;
+    if (this.volume) audio = Answer.generateSound(isRight, this.volume);
+    if (audio) audio.autoplay = true;
 
     const divContainer = document.createElement('div');
     divContainer.className = 'answer-result hide';
     divContainer.innerHTML = this.generateRender(isRight);
     content.append(divContainer);
+
     setTimeout(() => divContainer.classList.remove('hide'), 500);
   }
 
@@ -64,6 +69,14 @@ export class Answer {
       replacers.push('negative', '✘');
       this.quizAnswers.push(0);
     }
+  }
+
+  static generateSound(isRight, volume) {
+    const audio = new Audio();
+    if (isRight) audio.src = '../../../assets/sounds/right.mp3';
+    else audio.src = '../../../assets/sounds/wrong.mp3';
+    audio.volume = volume / 100;
+    return audio;
   }
 }
 

@@ -20,7 +20,7 @@
 
 .settings-field-header
     margin: 0
-    font-size: 2rem
+    font-size: 1.5rem
 
 .volume
     display: block
@@ -30,3 +30,41 @@
 
 .volume.mute
     background: url(./assets/images/svg/mute.svg) no-repeat center / contain
+
+
+label
+  &:last-child 
+    border-bottom: 1px solid #BBB
+  input 
+    display: none
+  i 
+    display: inline-block
+    float: right
+    padding: 2px
+    width: 40px
+    height: 20px
+    border-radius: 13px
+    vertical-align: middle
+    transition: .25s
+    position: relative
+    background: $main-text-color
+    box-sizing: initial
+    &:after
+      content: " "
+      display: block
+      width: 20px
+      height: 20px
+      border-radius: 50%
+      background: #fff
+      position: absolute
+      left: 2px
+      transition: .25s
+  
+  input:checked + i 
+    background: $green-border
+
+  input:checked + i:after
+    left: 22px
+  
+  &:hover 
+    cursor: pointer 

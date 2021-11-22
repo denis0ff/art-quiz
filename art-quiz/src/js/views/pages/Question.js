@@ -8,7 +8,7 @@ export const Question = {
   },
   afterRender: async (input) => {
     const answerButtons = document.querySelectorAll('.answer-variant');
-    const answer = new Answer(input.answers);
+    const answer = new Answer(input.answers, input.settings);
     answerButtons.forEach((button) => button.addEventListener('click', answer));
   },
 };

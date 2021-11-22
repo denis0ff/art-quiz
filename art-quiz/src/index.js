@@ -75,7 +75,7 @@ const router = async () => {
   await Utils.sleep(500);
   hider.classList.toggle('show');
 
-  await Header.afterRender({ request, answers });
+  await Header.afterRender({ request, answers, settings });
   await page.afterRender({ inputData, answers, settings });
 };
 
