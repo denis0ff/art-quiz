@@ -4,6 +4,7 @@ export const Error404 = {
                 <h2> 404 Error </h2>
             </div>
         `,
+
   afterRender: async () => {},
 };
 

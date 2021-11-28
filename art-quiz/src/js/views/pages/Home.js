@@ -8,6 +8,7 @@ export const Home = {
         </div>
       </div>
     `,
+
   afterRender: async () => {},
 };
 

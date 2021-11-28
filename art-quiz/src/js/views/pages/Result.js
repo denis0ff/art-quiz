@@ -40,6 +40,7 @@ export const Result = {
     answers.length = 0;
     return template;
   },
+
   afterRender: async (input) => {
     const { volume } = input.settings;
     if (volume) {

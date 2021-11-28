@@ -13,9 +13,6 @@ export const Utils = {
     return request;
   },
 
-  // eslint-disable-next-line no-promise-executor-return
-  sleep: (ms) => new Promise((resolve) => setTimeout(resolve, ms)),
-
   getData: async (writoTo) => {
     const output = writoTo;
     const input = await fetch('./js/images.json').then((json) => json.json());
@@ -58,6 +55,9 @@ export const Utils = {
 
   selfCheck: () => {
     console.log(`
+    
+    Score 224/240
+
     - Стартовая страница и навигация (20/20)
     - [x] На стартовой странице есть кнопка, при клике по которой открываются настройки викторины, и две кнопки, при кликах по которым можно выбрать тип вопроса: угадать художника по картине, угадать картину по имени её автора +10
     - [x] Реализована навигация по страницам приложения +10

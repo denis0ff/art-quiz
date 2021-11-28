@@ -31,6 +31,7 @@ export const Categories = {
     `;
     return render;
   },
+
   afterRender: async (input) => {
     const doneLinks = document.querySelectorAll('.category-score-link.done');
     const score = new Score(input.inputData, input.answers);

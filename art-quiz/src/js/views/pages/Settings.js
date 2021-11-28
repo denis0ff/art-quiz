@@ -24,6 +24,7 @@ export const Settings = {
     </div>
     `;
   },
+
   afterRender: async (input) => {
     const { settings } = input;
     const buttonReset = document.getElementById('resetSettings');

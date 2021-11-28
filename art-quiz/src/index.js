@@ -43,6 +43,10 @@ const settings = {
   volume: 0,
 };
 
+const sleep = (ms) => new Promise((resolve) => {
+  setTimeout(() => resolve(), ms);
+});
+
 const router = async () => {
   const header = null || document.getElementById('header');
   const content = null || document.getElementById('main');
@@ -52,7 +56,7 @@ const router = async () => {
 
   const hider = document.getElementById('hider');
   hider.classList.toggle('show');
-  await Utils.sleep(500);
+  await sleep(500);
 
   header.innerHTML = await Header.render({ request, settings });
 
@@ -72,7 +76,7 @@ const router = async () => {
     inputData, request, answers, settings,
   });
 
-  await Utils.sleep(500);
+  await sleep(500);
   hider.classList.toggle('show');
 
   await Header.afterRender({ request, answers, settings });
