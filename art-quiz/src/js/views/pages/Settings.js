@@ -1,6 +1,6 @@
-let isFullscreen = false;
-
 export const Settings = {
+  isFullscreen: false,
+
   render: async (input) => {
     const { settings } = input;
     const { volume } = settings;
@@ -35,10 +35,12 @@ export const Settings = {
     const fullscreen = document.getElementById('fullscreen');
     const fullscreenInput = fullscreen.querySelector('input');
 
+    fullscreenInput.checked = Settings.isFullscreen;
+
     const currentSettings = {
       time: timeInput.value,
       volume: soundInput.value,
-      fullscreen: fullscreen.checked,
+      fullscreen: fullscreenInput.checked,
     };
 
     soundInput.onchange = (e) => {
@@ -60,19 +62,15 @@ export const Settings = {
       soundInput.value = currentSettings.volume;
       timeInput.value = currentSettings.time;
       fullscreenInput.checked = currentSettings.fullscreen;
-      fullscreen.onchange();
+      Settings.isFullscreen = currentSettings.fullscreen;
+      if (Settings.isFullscreen) document.body.requestFullscreen();
+      else if (document.fullscreenElement) document.exitFullscreen();
     };
 
-    fullscreenInput.checked = isFullscreen;
-
     fullscreen.onchange = () => {
-      if (!document.fullscreenElement) {
-        document.body.requestFullscreen();
-        isFullscreen = true;
-      } else if (document.fullscreenEnabled) {
-        document.exitFullscreen();
-        isFullscreen = false;
-      }
+      if (!Settings.isFullscreen) document.body.requestFullscreen();
+      else document.exitFullscreen();
+      Settings.isFullscreen = !Settings.isFullscreen;
     };
   },
 };
